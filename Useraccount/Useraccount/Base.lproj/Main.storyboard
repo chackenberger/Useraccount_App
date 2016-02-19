@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Login-->
@@ -23,14 +24,15 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rb4-Cv-3qF">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rb4-Cv-3qF">
                                 <rect key="frame" x="158" y="300" width="284" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="JJg-a0-Ue9"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="SlZ-HG-knJ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="SlZ-HG-knJ"/>
@@ -102,7 +104,7 @@
         <!--Register-->
         <scene sceneID="s3e-By-EsB">
             <objects>
-                <viewController storyboardIdentifier="register" title="Register" id="zIV-7l-WOB" customClass="ViewController" customModule="Useraccount" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="register" title="Register" id="zIV-7l-WOB" customClass="RegisterViewController" customModule="Useraccount" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lwt-tu-R2V"/>
                         <viewControllerLayoutGuide type="bottom" id="JeZ-cR-ESU"/>
@@ -132,7 +134,7 @@
                                     <constraint firstAttribute="height" constant="30" id="aW3-Kl-5EN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="0Dt-Mu-f3v"/>
@@ -218,7 +220,7 @@
         <!--Respone-->
         <scene sceneID="7Qt-fA-9PJ">
             <objects>
-                <viewController storyboardIdentifier="respone" title="Respone" id="amv-x5-AkK" customClass="ViewController" customModule="Useraccount" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="respone" title="Respone" id="amv-x5-AkK" customClass="ResponseViewController" customModule="Useraccount" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="w8y-Ps-gKr"/>
                         <viewControllerLayoutGuide type="bottom" id="WZ6-7W-d9q"/>
@@ -226,9 +228,26 @@
                     <view key="view" contentMode="scaleToFill" id="9V7-7h-bfi">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Response Message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezu-Yu-e6M">
+                                <rect key="frame" x="20" y="122" width="560" height="169"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WZ6-7W-d9q" firstAttribute="top" secondItem="ezu-Yu-e6M" secondAttribute="bottom" constant="309" id="Ez8-Ph-kHx"/>
+                            <constraint firstItem="ezu-Yu-e6M" firstAttribute="top" secondItem="w8y-Ps-gKr" secondAttribute="bottom" constant="58" id="Xe7-e3-ceA"/>
+                            <constraint firstItem="ezu-Yu-e6M" firstAttribute="leading" secondItem="9V7-7h-bfi" secondAttribute="leadingMargin" id="sO5-ar-7Tq"/>
+                            <constraint firstItem="ezu-Yu-e6M" firstAttribute="trailing" secondItem="9V7-7h-bfi" secondAttribute="trailingMargin" id="v7K-TQ-E94"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Respone" id="fau-0N-BOI"/>
+                    <navigationItem key="navigationItem" title="Response" id="fau-0N-BOI"/>
+                    <connections>
+                        <outlet property="response" destination="ezu-Yu-e6M" id="Yee-3b-UVV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ya-DC-dih" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

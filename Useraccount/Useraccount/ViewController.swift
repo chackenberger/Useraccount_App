@@ -8,27 +8,39 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var logUsername: UITextField!
     @IBOutlet var logPassword: UITextField!
     
-    @IBOutlet var regName: UITextField!
-    @IBOutlet var regUsername: UITextField!
-    @IBOutlet var regPassword: UITextField!
+    var response: String!
     
     @IBAction func login(sender: UIButton) {
-        performSegueWithIdentifier("loginSeg", sender: sender)
+        Rest.dologin(logUsername.text!, password: logPassword.text!, closure: { (rsp: String) -> Void in
+            self.response = rsp
+            NSOperationQueue.mainQueue().addOperationWithBlock({() -> Void in
+                self.performSegueWithIdentifier("loginSeg", sender: sender)
+            })
+        })
     }
     
-    @IBAction func register(sender: UIButton) {
-        performSegueWithIdentifier("registerSeg", sender: sender)
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "loginSeg") {
+            let rv = segue.destinationViewController as! ResponseViewController
+            rv.setMessage(self.response)
+        }
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.logUsername.delegate = self
+        self.logPassword.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
