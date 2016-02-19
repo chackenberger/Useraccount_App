@@ -9,7 +9,23 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet var logUsername: UITextField!
+    @IBOutlet var logPassword: UITextField!
+    
+    @IBOutlet var regName: UITextField!
+    @IBOutlet var regUsername: UITextField!
+    @IBOutlet var regPassword: UITextField!
+    
+    @IBAction func login(sender: UIButton) {
+        performSegueWithIdentifier("loginSeg", sender: sender)
+    }
+    
+    @IBAction func register(sender: UIButton) {
+        performSegueWithIdentifier("registerSeg", sender: sender)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
