@@ -10,12 +10,42 @@ import Foundation
 
 class Rest {
     
-    static func dologin(username: String, password: String, closure: (String) -> Void) {
+    private let host = "http://192.168.0.12:8000/"
+    
+    private static var instance: Rest!
+    
+    private init() {}
+    
+    static func getInstance() -> Rest {
+        if(instance == nil) {
+            instance = Rest()
+        }
+        return instance
+    }
+    
+    func dologin(username: String, password: String, closure: (String) -> Void) {
+        let uri = "useraccount/login/dologin?username=\(username)&password=\(password)"
+        request(uri, closure: { (rps) -> Void in
+            if(rps["status"] as! Bool) { closure("Succesfully logged in!") }
+            else { closure("Error: \(rps["error_msg"]!)") }
+        })
+        
+    }
+    
+    func doregister(name: String, username: String, password: String, closure: (String) -> Void) {
+        let uri = "useraccount/register/doregister?name=\(name)&username=\(username)&password=\(password)"
+        request(uri, closure: { (rps) -> Void in
+            if(rps["status"] as! Bool) { closure("Succesfully registered!") }
+            else { closure("Error: \(rps["error_msg"]!)") }
+        })
+    }
+    
+    func request(uri: String, closure: (Dictionary<String, AnyObject>) -> Void) {
         let configuration = NSURLSessionConfiguration .defaultSessionConfiguration()
         let session = NSURLSession(configuration: configuration)
         
         
-        let urlString = "http://10.0.100.46:8000/useraccount/login/dologin?username=\(username)&password=\(password)"
+        let urlString = host + uri
         
         //print("get wallet balance url string is \(urlString)")
         //let url = NSURL(string: urlString as String)
@@ -48,25 +78,15 @@ class Rest {
                 do {
                     let rps = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as! Dictionary<String, AnyObject>
                     
-                    print(rps["status"])
+                    closure(rps)
                     
-                    if(rps["status"] as! Bool) {
-                        closure("Succesfully logged in")
-                    }else {
-                        closure("Error: \(rps["error_msg"] as! String)")
-                    }
-                
                     // }
                 } catch {
                     print("error serializing JSON: \(error)")
                 }
                 
                 break
-            case 400:
-                
-                break
-            default:
-                print("wallet GET request got response \(httpResponse.statusCode)")
+            default: break
             }
         }
         dataTask.resume()

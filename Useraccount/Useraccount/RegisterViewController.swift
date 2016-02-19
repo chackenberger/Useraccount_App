@@ -13,16 +13,24 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var regName: UITextField!
     @IBOutlet var regUsername: UITextField!
     @IBOutlet var regPassword: UITextField!
+    
+    var response: String!
+    let rest = Rest.getInstance()
 
     
     @IBAction func register(sender: UIButton) {
-        performSegueWithIdentifier("registerSeg", sender: sender)
+        rest.doregister(regName.text!, username: regUsername.text!, password: regPassword.text!, closure: { (rsp: String) -> Void in
+            self.response = rsp
+            NSOperationQueue.mainQueue().addOperationWithBlock() {
+                self.performSegueWithIdentifier("registerSeg", sender: sender)
+            }
+        })
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "registerSeg") {
             let rv = segue.destinationViewController as! ResponseViewController
-            rv.setMessage("Register Response")
+            rv.setMessage(self.response)
         }
     }
     

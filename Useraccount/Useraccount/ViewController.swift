@@ -14,13 +14,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var logPassword: UITextField!
     
     var response: String!
+    let rest = Rest.getInstance()
     
     @IBAction func login(sender: UIButton) {
-        Rest.dologin(logUsername.text!, password: logPassword.text!, closure: { (rsp: String) -> Void in
+        rest.dologin(logUsername.text!, password: logPassword.text!, closure: { (rsp: String) -> Void in
             self.response = rsp
-            NSOperationQueue.mainQueue().addOperationWithBlock({() -> Void in
+            NSOperationQueue.mainQueue().addOperationWithBlock() {
                 self.performSegueWithIdentifier("loginSeg", sender: sender)
-            })
+            }
         })
     }
     
