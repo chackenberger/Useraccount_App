@@ -21,7 +21,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3I-4B-lwt">
                                 <rect key="frame" x="261" y="195.5" width="79" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rb4-Cv-3qF">
@@ -32,7 +32,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="SlZ-HG-knJ"/>
@@ -42,7 +42,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cm5-Cb-Ffh">
                                 <rect key="frame" x="263" y="271" width="74" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyc-kd-NMi">
@@ -60,7 +60,7 @@
                                     <constraint firstAttribute="height" constant="30" id="uyu-aL-MjX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="kma-y9-X1S"/>
@@ -69,6 +69,7 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="nAM-wm-MIZ" firstAttribute="trailing" secondItem="Rb4-Cv-3qF" secondAttribute="trailing" id="757-kq-gfj"/>
                             <constraint firstItem="nAM-wm-MIZ" firstAttribute="centerX" secondItem="GfW-gg-hze" secondAttribute="centerX" id="BCh-nW-Xfa"/>
@@ -83,6 +84,9 @@
                             <constraint firstItem="Rb4-Cv-3qF" firstAttribute="top" secondItem="nAM-wm-MIZ" secondAttribute="bottom" constant="46" id="c9g-vA-4M8"/>
                             <constraint firstItem="nAM-wm-MIZ" firstAttribute="top" secondItem="GfW-gg-hze" secondAttribute="top" constant="224" id="y4r-4y-6eS"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Alu-xc-n6H" appends="YES" id="ZXP-4A-SoQ"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="Wkq-bl-Isk">
                         <barButtonItem key="rightBarButtonItem" title="Register" id="kBv-78-KR3">
@@ -98,6 +102,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LVO-mG-Yaq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Alu-xc-n6H">
+                    <connections>
+                        <action selector="tapped:" destination="yby-Vk-yGR" id="gsG-e2-R0v"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1117" y="-373"/>
         </scene>
@@ -120,7 +129,7 @@
                                     <constraint firstAttribute="height" constant="30" id="bzq-u9-LC1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="QBv-Wh-PT6"/>
@@ -134,7 +143,7 @@
                                     <constraint firstAttribute="height" constant="30" id="aW3-Kl-5EN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="0Dt-Mu-f3v"/>
@@ -144,19 +153,19 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MxG-t0-zDe">
                                 <rect key="frame" x="278" y="174" width="45" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GXH-TB-1c8">
                                 <rect key="frame" x="261" y="251" width="79" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzH-dI-lKQ">
                                 <rect key="frame" x="263" y="328" width="74" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ae6-w4-w0l">
@@ -174,7 +183,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="qnI-MD-PHm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="qnI-MD-PHm"/>
@@ -183,6 +192,7 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="inW-Au-NVC" firstAttribute="top" secondItem="TbE-g8-qEt" secondAttribute="top" constant="280" id="7PF-yq-vqH"/>
                             <constraint firstItem="l0p-Lw-IKc" firstAttribute="top" secondItem="MxG-t0-zDe" secondAttribute="bottom" constant="8" symbolic="YES" id="87E-jB-ct7"/>
@@ -204,6 +214,9 @@
                             <constraint firstItem="inW-Au-NVC" firstAttribute="top" secondItem="l0p-Lw-IKc" secondAttribute="bottom" constant="47" id="reB-2b-ted"/>
                             <constraint firstItem="l0p-Lw-IKc" firstAttribute="leading" secondItem="3S7-Qr-pVS" secondAttribute="leading" id="u20-kI-da0"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="2lJ-7e-1fs" appends="YES" id="fNy-QK-b6B"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Register" id="NzU-Yf-fhI"/>
                     <connections>
@@ -214,6 +227,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tUr-ff-bkB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="2lJ-7e-1fs">
+                    <connections>
+                        <action selector="tapped:" destination="zIV-7l-WOB" id="nbG-6V-SkU"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1117" y="498"/>
         </scene>
@@ -232,7 +250,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Response Message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezu-Yu-e6M">
                                 <rect key="frame" x="20" y="122" width="560" height="169"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -273,6 +291,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jiO-wn-IaL"/>
+        <segue reference="PiJ-LI-YT9"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -18,13 +18,19 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     let rest = Rest.getInstance()
 
     
-    @IBAction func register(sender: UIButton) {
+    @IBAction func register(sender: AnyObject) {
         rest.doregister(regName.text!, username: regUsername.text!, password: regPassword.text!, closure: { (rsp: String) -> Void in
             self.response = rsp
             NSOperationQueue.mainQueue().addOperationWithBlock() {
                 self.performSegueWithIdentifier("registerSeg", sender: sender)
             }
         })
+    }
+    
+    @IBAction func tapped(sender: UITapGestureRecognizer) {
+        self.regName.resignFirstResponder()
+        self.regUsername.resignFirstResponder()
+        self.regPassword.resignFirstResponder()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -35,8 +41,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return false
+        self.register(textField)
+        return true
     }
     
     override func viewDidLoad() {

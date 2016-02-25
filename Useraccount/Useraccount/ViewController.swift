@@ -16,13 +16,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var response: String!
     let rest = Rest.getInstance()
     
-    @IBAction func login(sender: UIButton) {
+    @IBAction func login(sender: AnyObject) {
         rest.dologin(logUsername.text!, password: logPassword.text!, closure: { (rsp: String) -> Void in
             self.response = rsp
             NSOperationQueue.mainQueue().addOperationWithBlock() {
                 self.performSegueWithIdentifier("loginSeg", sender: sender)
             }
         })
+    }
+    
+    @IBAction func tapped(sender: UITapGestureRecognizer) {
+        self.logUsername.resignFirstResponder()
+        self.logPassword.resignFirstResponder()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -33,8 +38,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return false
+        self.login(textField)
+        return true
     }
     
     override func viewDidLoad() {

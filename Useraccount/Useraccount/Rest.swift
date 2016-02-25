@@ -10,7 +10,7 @@ import Foundation
 
 class Rest {
     
-    private let host = "http://192.168.0.12:8000/"
+    private let host = "https://useraccount-athc.rhcloud.com/"
     
     private static var instance: Rest!
     
@@ -61,6 +61,9 @@ class Rest {
             (let data: NSData?, let response: NSURLResponse?, let error: NSError?) -> Void in
             
             // 1: Check HTTP Response for successful GET request
+            if((error) != nil) {
+                print(error!)
+            }
             guard let httpResponse = response as? NSHTTPURLResponse, receivedData = data
                 else {
                     print("error: not a valid http response")
